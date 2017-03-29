@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B3E45009-C7C3-4090-837C-2D30C9058444}</ProjectGuid>
+    <RootNamespace>tinyRTSP</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\thirdparties\win32\include;..\tinyRTSP\include;..\tinySAK\src;..\tinyNET\src;..\tinyMedia\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG_LEVEL=DEBUG_LEVEL_INFO;WIN32;_DEBUG;_WINDOWS;_USRDLL;TINYRTSP_EXPORTS;_WIN32_WINNT 0x0501;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(OutDir)tinySAK.lib;$(OutDir)tinyNET.lib;$(OutDir)tinySDP.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateMapFile>true</GenerateMapFile>
+      <AssemblyDebug>
+      </AssemblyDebug>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\thirdparties\win32\include;..\tinyRTSP\include;..\tinySAK\src;..\tinyNET\src;..\tinyMedia\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;TINYRTSP_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(OutDir)tinySAK.lib;$(OutDir)tinyNET.lib;$(OutDir)tinySDP.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>MSVCRTD;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>NotSet</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\auth\trtsp_auth.c" />
+    <ClCompile Include="src\auth\trtsp_challenge.c" />
+    <ClCompile Include="src\headers\trtsp_header_Session.c" />
+    <ClCompile Include="src\headers\trtsp_header_Transport.c" />
+    <ClCompile Include="src\trtsp.c" />
+    <ClCompile Include="src\trtsp_action.c" />
+    <ClCompile Include="src\trtsp_dialog.c" />
+    <ClCompile Include="src\trtsp_event.c" />
+    <ClCompile Include="src\trtsp_message.c" />
+    <ClCompile Include="src\trtsp_session.c" />
+    <ClCompile Include="src\trtsp_url.c" />
+    <ClCompile Include="src\headers\trtsp_header.c" />
+    <ClCompile Include="src\headers\trtsp_header_Authorization.c" />
+    <ClCompile Include="src\headers\trtsp_header_Content_Length.c" />
+    <ClCompile Include="src\headers\trtsp_header_Content_Type.c" />
+    <ClCompile Include="src\headers\trtsp_header_CSeq.c" />
+    <ClCompile Include="src\headers\trtsp_header_Dummy.c" />
+    <ClCompile Include="src\headers\trtsp_header_WWW_Authenticate.c" />
+    <ClCompile Include="src\parsers\trtsp_parser_header.c" />
+    <ClCompile Include="src\parsers\trtsp_parser_message.c" />
+    <ClCompile Include="src\parsers\trtsp_parser_url.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\tinyrtsp\auth\trtsp_auth.h" />
+    <ClInclude Include="include\tinyrtsp\auth\trtsp_challenge.h" />
+    <ClInclude Include="include\tinyrtsp\headers\trtsp_header_Session.h" />
+    <ClInclude Include="include\tinyrtsp\headers\trtsp_header_Transport.h" />
+    <ClInclude Include="include\tinyrtsp\trtsp_message_common.h" />
+    <ClInclude Include="include\trtsp.h" />
+    <ClInclude Include="include\tinyRTSP\trtsp_action.h" />
+    <ClInclude Include="include\tinyRTSP\trtsp_dialog.h" />
+    <ClInclude Include="include\tinyRTSP\trtsp_event.h" />
+    <ClInclude Include="include\tinyRTSP\trtsp_message.h" />
+    <ClInclude Include="include\tinyRTSP\trtsp_session.h" />
+    <ClInclude Include="include\tinyRTSP\trtsp_url.h" />
+    <ClInclude Include="include\tinyrtsp.h" />
+    <ClInclude Include="include\tinyrtsp_config.h" />
+    <ClInclude Include="include\tinyRTSP\headers\trtsp_header.h" />
+    <ClInclude Include="include\tinyRTSP\headers\trtsp_header_Authorization.h" />
+    <ClInclude Include="include\tinyRTSP\headers\trtsp_header_Content_Length.h" />
+    <ClInclude Include="include\tinyRTSP\headers\trtsp_header_Content_Type.h" />
+    <ClInclude Include="include\tinyRTSP\headers\trtsp_header_CSeq.h" />
+    <ClInclude Include="include\tinyRTSP\headers\trtsp_header_Dummy.h" />
+    <ClInclude Include="include\tinyRTSP\headers\trtsp_header_WWW_Authenticate.h" />
+    <ClInclude Include="include\tinyRTSP\parsers\trtsp_parser_header.h" />
+    <ClInclude Include="include\tinyRTSP\parsers\trtsp_parser_message.h" />
+    <ClInclude Include="include\tinyRTSP\parsers\trtsp_parser_url.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ragel\trtsp_machine_header.rl" />
+    <None Include="ragel\trtsp_machine_message.rl" />
+    <None Include="ragel\trtsp_machine_utils.rl" />
+    <None Include="ragel\trtsp_parser_header.rl" />
+    <None Include="ragel\trtsp_parser_header_Authorization.rl" />
+    <None Include="ragel\trtsp_parser_header_Content_Length.rl" />
+    <None Include="ragel\trtsp_parser_header_Content_Type.rl" />
+    <None Include="ragel\trtsp_parser_header_CSeq.rl" />
+    <None Include="ragel\trtsp_parser_header_Dummy.rl" />
+    <None Include="ragel\trtsp_parser_header_WWW_Authenticate.rl" />
+    <None Include="ragel\trtsp_parser_message.rl" />
+    <None Include="ragel\trtsp_parser_url.rl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="version.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\tinyNET\tinyNET.vcxproj">
+      <Project>{7522a458-92f4-4259-b906-e84c2a65d9f1}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\tinySAK\tinySAK.vcxproj">
+      <Project>{6bc9b796-10c6-4cf7-a6e4-e2daccda84da}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
